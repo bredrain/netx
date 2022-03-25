@@ -125,15 +125,18 @@ position: relative;
 .slide_1_full::-webkit-scrollbar {    
     display: none;
 }
+.story_wrapper {
+    position: relative;
+}
 .slide_1_ruler {
     position: absolute;
     top: 0;
-    left: 0;
+    left: -30px;
     bottom: 0;
     background-image: url(../img/ruler.svg);
     background-repeat: no-repeat;
     background-size: cover;
-    width: 10%;
+    width: 20px;
 
 }
 .rotate {
@@ -169,7 +172,7 @@ position: relative;
 .story_grid {
     display: flex;
     flex-direction: column;
-    padding: 0 10%;
+    padding: 0 30px;
     overflow-y: auto;
     height: 60vh;
     margin-top: 20px;
