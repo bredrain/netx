@@ -27,7 +27,7 @@ import * as THREE from "../build/three.module.js";
           0.25,
           20
         );
-        camera.position.set(-5, 4, 5);
+        camera.position.set(-5, 3, 5);
 
         scene = new THREE.Scene();
 
@@ -62,7 +62,7 @@ import * as THREE from "../build/three.module.js";
         controls.addEventListener("change", render); // use if there is no animation loop
         controls.minDistance = 2;
         controls.maxDistance = 10;
-        controls.target.set(0, 0, 0);
+        controls.target.set(0, 3, 0);
         controls.autoRotate = true;
 		    controls.autoRotateSpeed =60;
         controls.enabled = false;
