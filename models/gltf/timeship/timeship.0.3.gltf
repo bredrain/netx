@@ -1,0 +1,110 @@
+{
+    "asset" : {
+        "generator" : "Khronos glTF Blender I/O v1.6.16",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Cylinder",
+            "scale" : [
+                0.5132991671562195,
+                -0.05700213089585304,
+                0.5040304064750671
+            ],
+            "translation" : [
+                0,
+                0.05912098288536072,
+                0
+            ]
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Cylinder.005",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 4322,
+            "max" : [
+                3.996847152709961,
+                1,
+                4.075925350189209
+            ],
+            "min" : [
+                -4.00037956237793,
+                -44.79066467285156,
+                -4.068310737609863
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 4322,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 4322,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 12684,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 51864,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 51864,
+            "byteOffset" : 51864
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 34576,
+            "byteOffset" : 103728
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 25368,
+            "byteOffset" : 138304
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 163672,
+            "uri" : "timeship.0.3.bin"
+        }
+    ]
+}

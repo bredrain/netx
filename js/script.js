@@ -27,7 +27,7 @@ import * as THREE from "../build/three.module.js";
           0.25,
           20
         );
-        camera.position.set(-1.8, 0.6, 2.7);
+        camera.position.set(-5, 4, 5);
 
         scene = new THREE.Scene();
 
@@ -37,10 +37,14 @@ import * as THREE from "../build/three.module.js";
         light.position.set(-1, 2, 4);
         scene.add(light);
 
-        const loader = new GLTFLoader().setPath("models/gltf/Duck/gLTF/");
-        loader.load("Duck.gltf", function (gltf) {
+        const loader = new GLTFLoader().setPath("models/gltf/timeship/");
+        let meshModel;
+        let rotateMeshAncle =0;
+        loader.load("t7.gltf", function (gltf) {
+          meshModel = gltf.scene.children[0];
           scene.add(gltf.scene);
           render();
+          //animate();
         });
 
         renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -58,15 +62,19 @@ import * as THREE from "../build/three.module.js";
         controls.addEventListener("change", render); // use if there is no animation loop
         controls.minDistance = 2;
         controls.maxDistance = 10;
-        controls.target.set(0, 0, -0.2);
+        controls.target.set(0, 0, 0);
         controls.autoRotate = true;
 		    controls.autoRotateSpeed =60;
-		    animate();
+        controls.enabled = false;
+		    render();
+        //animate();
         function animate() {
           requestAnimationFrame(animate);
 
           controls.update();
-
+          //meshModel.rotation.z += 0.1; 
+          //rotateMeshAncle = (rotateMeshAncle + 0.1) % (2*Math.PI);
+          //meshModel.rotation.set(new THREE.Vector3( 0, 0, Math.PI / 2));
           renderer.render(scene, camera);
         }
 
