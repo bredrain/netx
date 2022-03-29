@@ -252,6 +252,9 @@ position: relative;
 }
 
 
+.person img {
+    border-radius: 50%;
+}
 
 @keyframes animateIn {
     0% {
