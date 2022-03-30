@@ -85,20 +85,26 @@ function render() {
   renderer.render(scene, camera);
 }
 
-function scrollWheel(e) {
+// function scrollWheel(e) {
+//   e = window.event || e;
+//   var delta = Math.max(-1, Math.min(1, e.wheelDelta || -e.detail));
+//   console.log("---D---", delta);
+//   document.querySelector(".slide_1_full").scrollLeft -= delta * 10; // Multiplied by 10
+//   e.preventDefault();
+// }
+function scrollHandler(e) {
   e = window.event || e;
-  var delta = Math.max(-1, Math.min(1, e.wheelDelta || -e.detail));
-  console.log("---D---", delta);
-  document.querySelector(".slide_1_full").scrollLeft -= delta * 10; // Multiplied by 10
-  e.preventDefault();
-}
-function scrollKey(e) {
-  e = window.event || e;
-  console.log(e)
+  //console.log(e)
+  let delta = 0;
+  if (e.type == 'keydown' ) {
+
+  } else if ( e.type == 'wheel' ||  e.type == 'DOMMouseScroll' || e.type == 'onmousewheel') {
+    delta = Math.max(-1, Math.min(1, e.wheelDelta || -e.detail));
+  }
   const scrollGrid = document.querySelector(".story_grid");
   const scrollFull = document.querySelector(".slide_1_full");
 
-  if (e.code === "ArrowUp") {
+  if (delta == 1 || e.code === "ArrowUp") {
     //console.log('ArrUp')
     if (
       scrollFull.getBoundingClientRect().top > 0 &&
@@ -107,16 +113,24 @@ function scrollKey(e) {
       scrollFull.getBoundingClientRect().bottom < window.innerHeight &&
       scrollFull.scrollLeft > 0
     ) {
-      scrollFull.scrollLeft -= 10;
+      scrollFull.scrollLeft -= 20;
       e.preventDefault();
     } else if (  scrollGrid.getBoundingClientRect().top > 0 &&
       scrollGrid.getBoundingClientRect().top < window.innerHeight &&    
       scrollGrid.scrollTop  > 0) {
       scrollGrid.scrollTop -= 10;
       e.preventDefault();
+    } else if (
+      scrollFull.getBoundingClientRect().top < 0 &&
+      scrollFull.getBoundingClientRect().top < window.innerHeight &&
+      scrollFull.getBoundingClientRect().bottom > 0 &&
+      scrollFull.getBoundingClientRect().bottom < window.innerHeight 
+    ) {
+      window.scrollBy(0, -10);
+      e.preventDefault();
     }
   }
-  if (e.code === "ArrowDown") {
+  if (delta == -1 || e.code === "ArrowDown") {
     //console.log('ArrDown')
     if (
       scrollGrid.getBoundingClientRect().top > 0 &&
@@ -124,9 +138,8 @@ function scrollKey(e) {
       Math.floor(
         scrollGrid.scrollHeight -
           scrollGrid.scrollTop -
-          scrollGrid.clientHeight >
-          0
-      )
+          scrollGrid.clientHeight) >
+          0      
     ) {
       scrollGrid.scrollTop += 10;
       e.preventDefault();
@@ -139,9 +152,18 @@ function scrollKey(e) {
         scrollFull.scrollWidth - scrollFull.scrollLeft - scrollFull.clientWidth
       ) > 0
     ) {
-      scrollFull.scrollLeft += 10;
+      scrollFull.scrollLeft += 20;
       e.preventDefault();
-    } else {
+    } else if (
+      scrollFull.getBoundingClientRect().top > 0 &&
+      scrollFull.getBoundingClientRect().top < window.innerHeight &&
+      scrollFull.getBoundingClientRect().bottom > 0 &&
+      scrollFull.getBoundingClientRect().bottom > window.innerHeight 
+    ) {
+      
+        window.scrollBy(0, 10);
+        e.preventDefault();
+      
     }
   }
   // var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
@@ -149,33 +171,43 @@ function scrollKey(e) {
   // document.querySelector('.slide_1_full').scrollLeft -= (delta*10); // Multiplied by 10
   // e.preventDefault();
 }
-if (document.querySelector(".slide_1_full").addEventListener) {
+// if (document.querySelector(".slide_1_full").addEventListener) {
+//   // IE9, Chrome, Safari, Opera
+//   document
+//     .querySelector(".slide_1_full")
+//     .addEventListener("mousewheel", scrollHandler, false);
+//   // Firefox
+//   document
+//     .querySelector(".slide_1_full")
+//     .addEventListener("DOMMouseScroll", scrollHandler, false);
+// } else {
+//   // IE 6/7/8
+//   document
+//     .querySelector(".slide_1_full")
+//     .attachEvent("onmousewheel", scrollHandler);
+// }
+
+
+if (window.addEventListener) {
   // IE9, Chrome, Safari, Opera
-  document
-    .querySelector(".slide_1_full")
-    .addEventListener("mousewheel", scrollWheel, false);
+  window.addEventListener("wheel", scrollHandler, {passive: false});
   // Firefox
-  document
-    .querySelector(".slide_1_full")
-    .addEventListener("DOMMouseScroll", scrollWheel, false);
-} else {
-  // IE 6/7/8
-  document
-    .querySelector(".slide_1_full")
-    .attachEvent("onmousewheel", scrollWheel);
-}
-let last_known_scroll_position;
-let ticking = false;
+  window.addEventListener("DOMMouseScroll", scrollHandler, {passive: false});
+} 
 
-const scrollGrid = document.querySelector(".story_grid");
 
-scrollGrid.addEventListener("scroll", function (e) {
-  console.log("--H--", scrollGrid.scrollHeight);
-  console.log("--T--", scrollGrid.scrollTop);
-  let res = Math.floor(
-    scrollGrid.scrollHeight - scrollGrid.scrollTop - scrollGrid.clientHeight
-  );
-  console.log("--R--", res);
+// let last_known_scroll_position;
+// let ticking = false;
+
+// const scrollGrid = document.querySelector(".story_grid");
+
+//scrollGrid.addEventListener("scroll", function (e) {
+  // console.log("--H--", scrollGrid.scrollHeight);
+  // console.log("--T--", scrollGrid.scrollTop);
+  // let res = Math.floor(
+  //   scrollGrid.scrollHeight - scrollGrid.scrollTop - scrollGrid.clientHeight
+  // );
+  // console.log("--R--", res);
   // last_known_scroll_position = window.scrollY;
 
   // if (!ticking) {
@@ -186,6 +218,6 @@ scrollGrid.addEventListener("scroll", function (e) {
 
   //   ticking = true;
   // }
-});
+//});
 
-window.addEventListener("keydown", scrollKey);
+window.addEventListener("keydown", scrollHandler);
