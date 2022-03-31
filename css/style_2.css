@@ -126,7 +126,9 @@
     .slide1_flex {
         display: flex;
     }
-    
+    .slide_1  {
+        overflow-y: scroll;
+    }
     .slide_1_left {
         /* grid-column: 1 / 8;
         grid-row: 2 / 3; */
@@ -154,6 +156,9 @@
         grid-row: 3 / 4; */
     }
     
+    .scrl_container {
+        height: 90vh;
+    }
     
     .slide_1_full {
         /* grid-column: 1 / 13;
