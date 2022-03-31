@@ -26,7 +26,7 @@ function init() {
   parent.appendChild(container);
 
   camera = new THREE.PerspectiveCamera(45, viewWidth / viewHeight, 0.25, 2000);
-  camera.position.set(-20, 20, 20);
+  camera.position.set(-30, 20, 20);
   //camera.position.z = 100;
 
   // scene
