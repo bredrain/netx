@@ -96,10 +96,13 @@ function scrollHandler(e) {
   e = window.event || e;
   //console.log(e)
   let delta = 0;
+  let step = 0;
   if (e.type == 'keydown' ) {
 
   } else if ( e.type == 'wheel' ||  e.type == 'DOMMouseScroll' || e.type == 'onmousewheel') {
     delta = Math.max(-1, Math.min(1, e.wheelDelta || -e.detail));
+    step = Math.abs(e.deltaY);
+    //console.log(step);
   }
   const scrollGrid = document.querySelector(".story_grid");
   const scrollFull = document.querySelector(".slide_1_full");
@@ -113,12 +116,12 @@ function scrollHandler(e) {
       scrollFull.getBoundingClientRect().bottom < window.innerHeight &&
       scrollFull.scrollLeft > 0
     ) {
-      scrollFull.scrollLeft -= 20;
+      scrollFull.scrollLeft -= 50;
       e.preventDefault();
     } else if (  scrollGrid.getBoundingClientRect().top > 0 &&
       scrollGrid.getBoundingClientRect().top < window.innerHeight &&    
       scrollGrid.scrollTop  > 0) {
-      scrollGrid.scrollTop -= 10;
+      scrollGrid.scrollTop -= 20;
       e.preventDefault();
     } else if (
       scrollFull.getBoundingClientRect().top < 0 &&
@@ -126,7 +129,10 @@ function scrollHandler(e) {
       scrollFull.getBoundingClientRect().bottom > 0 &&
       scrollFull.getBoundingClientRect().bottom < window.innerHeight 
     ) {
-      window.scrollBy(0, -10);
+      window.scrollBy(0, -20);
+      e.preventDefault();
+    }else if (step > scrollFull.clientHeight/2) {
+      window.scrollBy(0, -50);
       e.preventDefault();
     }
   }
@@ -141,7 +147,7 @@ function scrollHandler(e) {
           scrollGrid.clientHeight) >
           0      
     ) {
-      scrollGrid.scrollTop += 10;
+      scrollGrid.scrollTop += 20;
       e.preventDefault();
     } else if (
       scrollFull.getBoundingClientRect().top > 0 &&
@@ -152,7 +158,7 @@ function scrollHandler(e) {
         scrollFull.scrollWidth - scrollFull.scrollLeft - scrollFull.clientWidth
       ) > 0
     ) {
-      scrollFull.scrollLeft += 20;
+      scrollFull.scrollLeft += 50;
       e.preventDefault();
     } else if (
       scrollFull.getBoundingClientRect().top > 0 &&
@@ -161,9 +167,11 @@ function scrollHandler(e) {
       scrollFull.getBoundingClientRect().bottom > window.innerHeight 
     ) {
       
-        window.scrollBy(0, 10);
-        e.preventDefault();
-      
+        window.scrollBy(0, 20);
+        e.preventDefault();      
+    } else if (step > scrollFull.clientHeight/2) {
+      window.scrollBy(0, 50);
+      e.preventDefault();
     }
   }
   // var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
