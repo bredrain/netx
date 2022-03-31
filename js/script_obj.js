@@ -2,9 +2,9 @@ import * as THREE from "../build/three.module.js";
 
 import { MTLLoader } from "../jsm/loaders/MTLLoader.js";
 import { OBJLoader } from "../jsm/loaders/OBJLoader.js";
-import { OrbitControls } from "../jsm/controls/OrbitControls.js";
+// import { OrbitControls } from "../jsm/controls/OrbitControls.js";
 
-let camera, scene, renderer;
+let camera, scene, renderer, rad = 1, angle = 0;
 
 let mouseX = 0,
   mouseY = 0;
@@ -25,8 +25,10 @@ function init() {
   const viewWidth = parent.clientWidth;
   parent.appendChild(container);
 
-  camera = new THREE.PerspectiveCamera(45, viewWidth / viewHeight, 0.25, 2000);
-  camera.position.set(-30, 20, 20);
+  camera = new THREE.PerspectiveCamera(45, viewWidth / viewHeight, 0.25, 20);
+  camera.position.set(-5, 2, 5);
+  rad = Math.sqrt(Math.pow(camera.position.x, 2) + Math.pow(camera.position.z, 2)); 
+
   //camera.position.z = 100;
 
   // scene
@@ -39,6 +41,7 @@ function init() {
   const pointLight = new THREE.PointLight(0xffffff, 0.8);
   camera.add(pointLight);
   scene.add(camera);
+  camera.lookAt( scene.position );
 
   // model
 
@@ -51,14 +54,14 @@ function init() {
 
   new MTLLoader()
     .setPath("models/")
-    .load("timeship.0.6.mtl", function (materials) {
+    .load("t8.mtl", function (materials) {
       materials.preload();
 
       new OBJLoader()
         .setMaterials(materials)
         .setPath("models/")
         .load(
-          "timeship.0.6.obj",
+          "t8.obj",
           function (object) {
             //object.position.y = - 95;
             scene.add(object);
@@ -72,45 +75,19 @@ function init() {
   renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(viewWidth, viewHeight);
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1;
   renderer.outputEncoding = THREE.sRGBEncoding;
   container.appendChild(renderer.domElement);
-
-  const pmremGenerator = new THREE.PMREMGenerator(renderer);
-  pmremGenerator.compileEquirectangularShader();
-
-  const controls = new OrbitControls(camera, renderer.domElement);
-  controls.addEventListener("change", render); // use if there is no animation loop
-  controls.minDistance = 2;
-  controls.maxDistance = 10;
-  controls.target.set(0, 0, 0);
-  controls.autoRotate = true;
-  controls.autoRotateSpeed = 60;
-  //controls.enabled = false;
   
-  var prevEpoch = Date.now();
-  const frameTime = 40; // ~24fps, set 15 for 60fps
   animate();
 
   function animate() {
-    // requestAnimationFrame(animate);
-    // controls.update();
-    // renderer.render(scene, camera);
-   
-    var epoch = Date.now();
-    var delta = epoch - prevEpoch;
-    prevEpoch = epoch;
-    // Draw!
+    angle = (angle + 0.01 > Math.PI *2) ? 0 : angle +0.01; 
+    camera.position.x = rad * Math.cos(angle);
+    camera.position.z = rad * Math.sin(angle);;
+
+    camera.lookAt( scene.position );
     renderer.render(scene, camera);
-    // Schedule the next frame.
-    if (delta > frameTime) {
-      controls.update();
-      requestAnimationFrame(animate);
-    } else {
-      window.setTimeout(animate, frameTime - delta);
-    }
-    
+    requestAnimationFrame(animate);
   }
 
   window.addEventListener("resize", onWindowResize);
@@ -124,11 +101,10 @@ function onWindowResize() {
 
 	const viewHeight = parent.clientHeight;
 	const viewWidth = parent.clientWidth;
-
-	camera.aspect = viewHeight / viewWidth;
+  camera.aspect = viewWidth / viewHeight;
 	camera.updateProjectionMatrix();
 
-	renderer.setSize(viewHeight, viewWidth);
+	renderer.setSize(viewWidth, viewHeight );
 
 	render();
   }
@@ -136,24 +112,43 @@ function onWindowResize() {
 	renderer.render(scene, camera);
   }
 
-function scrollHorizontally(e) {
-  e = window.event || e;
-  var delta = Math.max(-1, Math.min(1, e.wheelDelta || -e.detail));
-  document.querySelector(".slide_1_full").scrollLeft -= delta * 10; // Multiplied by 10
-  e.preventDefault();
-}
-if (document.querySelector(".slide_1_full").addEventListener) {
-  // IE9, Chrome, Safari, Opera
-  document
-    .querySelector(".slide_1_full")
-    .addEventListener("mousewheel", scrollHorizontally, false);
-  // Firefox
-  document
-    .querySelector(".slide_1_full")
-    .addEventListener("DOMMouseScroll", scrollHorizontally, false);
-} else {
-  // IE 6/7/8
-  document
-    .querySelector(".slide_1_full")
-    .attachEvent("onmousewheel", scrollHorizontally);
-}
+// function scrollHorizontally(e) {
+//   e = window.event || e;
+//   var delta = Math.max(-1, Math.min(1, e.wheelDelta || -e.detail));
+//   document.querySelector(".slide_1_full").scrollLeft -= delta * 10; // Multiplied by 10
+//   e.preventDefault();
+// }
+// if (document.querySelector(".slide_1_full").addEventListener) {
+//   // IE9, Chrome, Safari, Opera
+//   document
+//     .querySelector(".slide_1_full")
+//     .addEventListener("mousewheel", scrollHorizontally, false);
+//   // Firefox
+//   document
+//     .querySelector(".slide_1_full")
+//     .addEventListener("DOMMouseScroll", scrollHorizontally, false);
+// } else {
+//   // IE 6/7/8
+//   document
+//     .querySelector(".slide_1_full")
+//     .attachEvent("onmousewheel", scrollHorizontally);
+// }
+
+let  last_known_scroll_position = 0;
+let ticking = false;
+window.addEventListener('scroll', function(e) {
+  const scrollGrid = document.querySelector('.story_grid');
+    console.log(scrollGrid.scrollHeight);
+    console.log(scrollGrid.scrollTop);
+
+  // last_known_scroll_position = window.scrollY;
+
+  // if (!ticking) {
+  //   window.requestAnimationFrame(function() {
+  //     console.log(last_known_scroll_position);
+  //     ticking = false;
+  //   });
+
+  //   ticking = true;
+  // }
+});
