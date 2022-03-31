@@ -17,19 +17,19 @@
 
       <div class="lang_switch">NL/EN</div>
     </header>
-    <main class="site_main" data-scroll-container>
-      <!-- <section class="slide1_section" >
-        <div class="slide_1 wrapper">  -->
-          <div class="slide1_flex slide1_section slide_1 wrapper" id="right_slide" data-scroll-section>         
-          <div class="slide_1_left" id="left_slide" data-scroll data-scroll-sticky  data-scroll-target="#right_slide">
+    <main class="site_main" >
+      <section class="slide1_section" >
+        <div data-scroll-container class="slide_1 wrapper" id="scroll_cont"> 
+          <div data-scroll-section class="slide1_flex" id="right_slide">         
+          <div data-scroll data-scroll-sticky data-scroll-target="#right_col" class="slide_1_left" id="left_slide">
             <div class="heading">
               <h1 class="marquee">
                 <span>AIR TRAVEL WAS THEN. TIME TRAVEL IS NOW.</span>
               </h1>           
             </div>  <!-- heding-->
-            <div class="slide1_canvas" id="slide_1_scene"></div>
+            <div class="slide1_canvas" id="slide_1_scene">This is <canvas></canvas></div>
           </div> <!-- slide_1_left -->
-          <div class="slide_1_right" data-scroll data-scroll-speed="1">
+          <div class="slide_1_right" data-scroll  id="right_col">
               
             <div class="story_title">Some title</div>
             <div class="story_grid">
@@ -82,7 +82,8 @@
           </div> <!-- slide_1_right -->
         </div>
           <div class="slide_1_gap"></div>
-          <div class="slide_1_full" id="full_slide" data-scroll data-scroll-speed="2" data-scroll-direction="horizontal" data-scroll-repeat="true" data-scroll-sticky  data-scroll-target="#full_slide">
+          <div class="scrl_container" id="full_contain" data-scroll-section> 
+          <div class="slide_1_full" id="full_slide" data-scroll data-scroll-speed="2" data-scroll-direction="horizontal" data-scroll-repeat="true" data-scroll-sticky  data-scroll-target="#full_contain">
             <div class="rotate">
               <svg
                 viewBox="0 0 1280 504"
@@ -590,10 +591,16 @@
            </svg>
             </div>
           </div> 
+<<<<<<< HEAD
         <!--  </div>  slide_1 wrapper 
       </section>-->
+=======
+        </div>
+         </div>  <!-- slide_1 wrapper -->
+      </section>
+>>>>>>> a3fd6e5fdc2835f9503ab4f29961d9e00192de90
 
-      <section class="slide2_section" data-scroll-section>
+      <section class="slide2_section" >
         <div class="slide_2 wrapper">
           <div class="testionials">
             <div class="left_col">
@@ -637,7 +644,7 @@
 				}
 			}
 		</script>
-    <script src="./build/locomotive-scroll.js"></script>
+    <!-- <script src="./build/locomotive-scroll.js"></script> -->
     <script type="module" src="./js/script_l.js"></script>
     
   </body>

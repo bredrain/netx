@@ -4,6 +4,9 @@ import * as THREE from "../build/three.module.js";
 import { GLTFLoader } from "../jsm/loaders/GLTFLoader.js";
 //import { RGBELoader } from "./jsm/loaders/RGBELoader.js";
 //import { RoughnessMipmapper } from "./jsm/utils/RoughnessMipmapper.js";
+
+import LocomotiveScroll from '../build/locomotive-scroll.esm';
+
 (function () {
 let camera,
   scene,
@@ -11,7 +14,7 @@ let camera,
   angle = 0,
   rad = 1;
 let renderRequested = false;
-init();
+//init();
 
 function init() {
   const container = document.createElement("div");
