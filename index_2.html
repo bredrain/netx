@@ -10,26 +10,36 @@
   </head>
 
   <body>
-    <header class="main_header">
+    <!-- <header class="main_header">
       <div class="logo">
         <a alt="Next Nature Network" href="/">NNN</a>
-    </div>
+    </div> 
 
       <div class="lang_switch">NL/EN</div>
+    </header> -->
+    <main class="site_main" data-scroll-container>
+
+      <header class="main_header">
+        <div class="logo">
+          <a alt="Next Nature Network" href="/">NNN</a>
+      </div>
+      <div class="lang_switch">NL/EN</div>
     </header>
-    <main class="site_main" >
-      <section class="slide1_section" >
-        <div data-scroll-container class="slide_1 wrapper" id="scroll_cont"> 
-          <div data-scroll-section class="slide1_flex" id="right_slide">         
-          <div data-scroll data-scroll-sticky data-scroll-target="#right_col" class="slide_1_left" id="left_slide">
+
+      <section class="slide1_section">
+        <div  class="slide_1 wrapper" id="scroll_cont"> 
+          <div  class="slide1_flex" id="right_slide">         
+          <div data-scroll data-scroll-speed="1" data-scroll-sticky data-scroll-target="#right_slide" data-scroll-offset="0%, 5.5%" class="slide_1_left" id="left_slide">
             <div class="heading">
               <h1 class="marquee">
                 <span>AIR TRAVEL WAS THEN. TIME TRAVEL IS NOW.</span>
               </h1>           
             </div>  <!-- heding-->
-            <div class="slide1_canvas" id="slide_1_scene">This is <canvas></canvas></div>
+            <div class="slide1_canvas" id="slide_1_scene">This is canvas
+              <!-- <img src="./img/Screenshot.png" alt=""> -->
+            </div>
           </div> <!-- slide_1_left -->
-          <div class="slide_1_right" data-scroll  id="right_col">
+          <div class="slide_1_right" data-scroll data-scroll-speed="1"  id="right_col">
               
             <div class="story_title">Some title</div>
             <div class="story_grid">
@@ -80,10 +90,12 @@
               <div class="circ"></div>
             </div> -->
           </div> <!-- slide_1_right -->
-        </div>
-          <div class="slide_1_gap"></div>
-          <div class="scrl_container" id="full_contain" data-scroll-section> 
-          <div class="slide_1_full" id="full_slide" data-scroll data-scroll-speed="2" data-scroll-direction="horizontal" data-scroll-repeat="true" data-scroll-sticky  data-scroll-target="#full_contain">
+        </div> <!-- slide1_flex" -->
+      <!-- </div> -->
+          <!-- <div class="slide_1_gap"></div> -->
+          <div class="scrl_container" id="full_contain" > 
+            <!-- data-scroll data-scroll-speed="2" data-scroll-direction="horizontal" data-scroll-repeat="true"   data-scroll-target="#full_contain" -->
+          <div class="slide_1_full" id="full_slide" >
             <div class="rotate">
               <svg
                 viewBox="0 0 1280 504"
@@ -592,7 +604,7 @@
             </div>
           </div> 
         </div>
-         </div>  <!-- slide_1 wrapper -->
+        </div> <!-- slide_1 wrapper -->
       </section>
 
       <section class="slide2_section" >
@@ -640,6 +652,8 @@
 			}
 		</script>
     <!-- <script src="./build/locomotive-scroll.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
+    <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
     <script type="module" src="./js/script_l.js"></script>
     
   </body>
