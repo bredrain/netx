@@ -158,6 +158,10 @@
         width: 100%!important;
         height: auto!important;
     }
+    .slide1_canvas img {
+        /* width: 100%; */
+        height: 300px;
+    }
     .slide_1_right {
         /* grid-column: 8/ 13;
         grid-row: 1 / 3; */

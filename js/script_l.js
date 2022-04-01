@@ -7,7 +7,9 @@ import { GLTFLoader } from "../jsm/loaders/GLTFLoader.js";
 
 import LocomotiveScroll from '../build/locomotive-scroll.esm.js';
 
-(function () {
+//(function () {
+ // document.addEventListener('DOMContentLoaded', function(){
+window.addEventListener("load", function () {
 let camera,
   scene,
   renderer,
@@ -90,12 +92,6 @@ function render() {
 }
 
 
-// const scrollerNew = new LocomotiveScroll({
-//   el: document.querySelector('[data-scroll-container]'),
-//   smooth: true
-// });
-// console.log(scrollerNew);
-
 const pageContainer = document.querySelector('[data-scroll-container]');
 
 /* SMOOTH SCROLL */
@@ -124,7 +120,7 @@ ScrollTrigger.scrollerProxy(pageContainer, {
   pinType: pageContainer.style.transform ? "transform" : "fixed"
 });
 
-window.addEventListener("load", function () {
+//window.addEventListener("load", function () {
   let pinBoxes = document.querySelectorAll(".slide_1_full > *");
   let pinWrap = document.querySelector(".slide_1_full");
   let pinWrapWidth = pinWrap.offsetWidth;
@@ -149,6 +145,8 @@ window.addEventListener("load", function () {
   ScrollTrigger.addEventListener("refresh", () => scrollerNew.update()); //locomotive-scroll
 
   ScrollTrigger.refresh();
-});
+  //scrollerNew.update()
+//});
 
-})();
+  });
+//})();
