@@ -31,6 +31,7 @@
         height: 3rem;
         z-index: 5;
         border-bottom: solid 2px #ffffff;
+        background-image: linear-gradient(90deg, #0079bb, #000000);
     }
     .logo {
        padding-left: 20px;
@@ -71,6 +72,7 @@
         grid-template-columns: repeat(12, 1fr);
         grid-template-rows: auto minmax(0, 1fr) 2rem auto; */
         padding-top: 3rem;
+        /* overflow-y: scroll; */
     
     }
     
@@ -127,9 +129,9 @@
     
     }
     .slide1_flex {
-        /* display: flex; */
+        display: flex;
         box-sizing: border-box;
-        font-size: 0;
+        /* font-size: 0; */
     }
 
     .slide_1  {
@@ -139,11 +141,12 @@
         /* grid-column: 1 / 8;
         grid-row: 2 / 3; */
         /* padding: 20px; */
-        /* min-width: 0; */
+        flex: 50%;
+        min-width: 0;
 
-        display: inline-block;
+        /* display: inline-block;
         width: 50%;
-        vertical-align: top;
+        vertical-align: top; */
 
         /* width: 49%;
         float: left; */
@@ -171,22 +174,25 @@
         /* width: 50%;
         margin-left: 50%; */
 
-        display: inline-block;
+        /* display: inline-block;
         width: calc(50% - 2px);
-        vertical-align: top;
+        vertical-align: top; */
        
         /* overflow: hidden; */
+        width: 50%;
+        flex: 50%;
     
     }
     
     .slide_1_gap {
         /* grid-column: 1 / 13;
         grid-row: 3 / 4; */
+        height: 20vh;
     }
     
     .scrl_container {
-        height: 90vh;
-        overflow-x: hidden;
+        /* height: 90vh; */
+         overflow: hidden; 
     }
     
     .slide_1_full {
@@ -226,7 +232,8 @@
     .fly_obj {
         position: absolute;
         top: 50%;
-        left: 10%;
+        left: 25%;
+        transform: translateY(-50%);
     }
     .fly_obj img {
         width: 100px;
@@ -280,7 +287,7 @@
     }
     
     .story_text {
-    
+        padding: 100px;
     }
     
     @keyframes scroll {

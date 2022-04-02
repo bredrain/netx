@@ -5,7 +5,7 @@ import { GLTFLoader } from "../jsm/loaders/GLTFLoader.js";
 //import { RGBELoader } from "./jsm/loaders/RGBELoader.js";
 //import { RoughnessMipmapper } from "./jsm/utils/RoughnessMipmapper.js";
 
-import LocomotiveScroll from '../build/locomotive-scroll.esm.js';
+//import LocomotiveScroll from '../build/locomotive-scroll.esm.js';
 
 //(function () {
  // document.addEventListener('DOMContentLoaded', function(){
@@ -91,65 +91,83 @@ function render() {
   renderer.render(scene, camera);
 }
 
-
-const pageContainer = document.querySelector('[data-scroll-container]');
-
-/* SMOOTH SCROLL */
-const scrollerNew = new LocomotiveScroll({
-  el: pageContainer,
-  smooth: true
+gsap.to("#left_slide", {
+  scrollTrigger: {
+    //scroller: "#scroll_cont", 
+    trigger: "#right_slide",
+    pin: "#left_slide",
+    // anticipatePin: 1,
+    start: "top "+ document.querySelector('header').clientHeight,
+    end: () => "+=" + (document.querySelector('#right_col').offsetHeight - document.querySelector('.heading').offsetHeight - document.querySelector('.slide1_canvas').offsetHeight), //- document.querySelector('#left_slide').offsetHeight
+    markers: true
+  }
+  
 });
 
-
-scrollerNew.on("scroll", ScrollTrigger.update);
-
-ScrollTrigger.scrollerProxy(pageContainer, {
-  scrollTop(value) {
-    return arguments.length
-      ? scrollerNew.scrollTo(value, 0, 0)
-      : scrollerNew.scroll.instance.scroll.y;
-  },
-  getBoundingClientRect() {
-    return {
-      left: 0,
-      top: 0,
-      width: window.innerWidth,
-      height: window.innerHeight
-    };
-  },
-  pinType: pageContainer.style.transform ? "transform" : "fixed"
-});
-
-//window.addEventListener("load", function () {
-  let pinBoxes = document.querySelectorAll(".slide_1_full > *");
-  let pinWrap = document.querySelector(".slide_1_full");
+  let pinBoxes = document.querySelectorAll(".slide_1_full .rotate"); 
+  let pinFull = document.querySelector(".slide_1_full");
+  let pinWrap = document.querySelector(".scrl_container");
   let pinWrapWidth = pinWrap.offsetWidth;
   let horizontalScrollLength = pinWrapWidth - window.innerWidth;
 
-  // Pinning and horizontal scrolling
 
-  gsap.to(".slide_1_full", {
-    scrollTrigger: {
-      scroller: pageContainer, //locomotive-scroll
-      scrub: true,
-      trigger: "#full_contain",
-      pin: true,
-      // anticipatePin: 1,
-      start: "bottom bottom",
-      end: pinWrapWidth
-    },
-    x: -horizontalScrollLength,
-    ease: "none"
+// gsap.to(".slide_1_full", {
+//   scrollTrigger: {
+//     //scroller: "#scroll_cont",
+//     // scrub: true,
+//     trigger: "#full_contain",
+//     pin: ".slide_1_full",
+//     // anticipatePin: 1,
+//     start: "bottom bottom",
+//     end: pinWrapWidth,
+//     markers: true
+//   },
+//   x: -horizontalScrollLength,
+//   ease: "none"
+// });
+
+// let st = ScrollTrigger.create({
+//   trigger: "#right_col",
+//   pin: "#left_slide",
+//   start: "top top",
+//   end: "+=500"
+// });
+
+ const margin = 0.3;
+  if ((typeof(pinFull) != 'undefined' && pinFull != null)) {
+    let sections = gsap.utils.toArray('.rotate');
+    gsap.to(sections, {
+      //xPercent: -100 * (sections.length - 1),
+      x: -(pinFull.offsetWidth - pinWrap.clientWidth) ,
+      ease: "none",
+      scrollTrigger: {
+        trigger: pinFull,
+        markers: true,
+        scrub: 1,
+        pin: true,
+        onUpdate: self => {
+
+          console.log("progress:", self.progress);
+          const progress = self.progress;
+          let scale;
+          if (progress == 0 || progress == 1) {
+            scale =1
+          } else if (progress > margin && progress < (1 - margin) ) {
+            scale =0;
+          } else if (progress <= margin) {  
+            scale = 1- progress/margin;
+          } else  if (progress >= (1- margin)) {
+            scale = (progress -1 +margin)/margin;
+          }
+          console.log("scale:", scale);
+          document.querySelector('.fly_obj').style.transform = "scale(" + scale + ") translateY(-50%)";
+        },
+        //snap: 1 / (sections.length - 1),
+        start: "top 20%",
+        end: () => "+=" + (pinFull.offsetHeight + this.window.innerHeight * 0.2) 
+      },
+    });
+  }
+
+
   });
-
-  ScrollTrigger.addEventListener("refresh", (self) => {
-    scrollerNew.update();
-    console.log(self.ptogress);
-  }); //locomotive-scroll
-
-  ScrollTrigger.refresh();
-  //scrollerNew.update()
-//});
-
-  });
-//})();
