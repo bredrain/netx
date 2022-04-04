@@ -99,7 +99,7 @@ gsap.to("#left_slide", {
     // anticipatePin: 1,
     start: "top "+ document.querySelector('header').clientHeight,
     end: () => "+=" + (document.querySelector('#right_col').offsetHeight - document.querySelector('.heading').offsetHeight - document.querySelector('.slide1_canvas').offsetHeight), //- document.querySelector('#left_slide').offsetHeight
-    markers: true
+    markers: true //for tests
   }
   
 });
@@ -142,7 +142,7 @@ gsap.to("#left_slide", {
       ease: "none",
       scrollTrigger: {
         trigger: pinFull,
-        markers: true,
+        markers: true, // for tests
         scrub: 1,
         pin: true,
         onUpdate: self => {
@@ -160,11 +160,11 @@ gsap.to("#left_slide", {
             scale = (progress -1 +margin)/margin;
           }
           console.log("scale:", scale);
-          document.querySelector('.fly_obj').style.transform = "scale(" + scale + ") translateY(-50%)";
+          document.querySelector('.fly_obj').style.transform = "translateY(-50%) scale(" + scale + ")";
         },
         //snap: 1 / (sections.length - 1),
         start: "top 20%",
-        end: () => "+=" + (pinFull.offsetHeight + this.window.innerHeight * 0.2) 
+        end: () => "+=" + (pinFull.offsetWidth - this.window.innerWidth) 
       },
     });
   }
