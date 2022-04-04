@@ -1,6 +1,6 @@
 import * as THREE from "../build/three.module.js";
 
-//import { OrbitControls } from "../jsm/controls/OrbitControls.js";
+import { OrbitControls } from "../jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "../jsm/loaders/GLTFLoader.js";
 //import { RGBELoader } from "./jsm/loaders/RGBELoader.js";
 //import { RoughnessMipmapper } from "./jsm/utils/RoughnessMipmapper.js";
@@ -16,7 +16,7 @@ let camera,
   angle = 0,
   rad = 1;
 let renderRequested = false;
-//init();
+init();
 
 function init() {
   const container = document.createElement("div");
@@ -38,11 +38,21 @@ function init() {
 
   scene = new THREE.Scene();
 
-  const color = 0xffffff;
-  const intensity = 1;
-  const light = new THREE.DirectionalLight(color, intensity);
-  light.position.set(-1, 2, 4);
-  scene.add(light);
+  // const color = 0xffffff;
+  // const intensity = 1;
+  // const light = new THREE.DirectionalLight(color, intensity);
+  // light.position.set(-1, 2, 4);
+  // scene.add(light);
+
+  const ambientLight = new THREE.AmbientLight(0xcccccc, 0.4);
+  scene.add(ambientLight);
+
+  const pointLight = new THREE.PointLight(0xffffff, 0.8);
+  camera.add(pointLight);
+  scene.add(camera);
+  camera.lookAt( scene.position );
+
+
 
   const loader = new GLTFLoader().setPath("models/gltf/timeship/");
 
@@ -57,15 +67,30 @@ function init() {
   renderer.outputEncoding = THREE.sRGBEncoding;
   container.appendChild(renderer.domElement);
 
+  const controls = new OrbitControls( camera, renderer.domElement );
+  controls.addEventListener( 'change', render ); // use if there is no animation loop
+  controls.minDistance = 2;
+  controls.maxDistance = 10;
+  controls.enablePan = false;
+  controls.enableZoom = false;
+  // controls.minAzimuthAngle = 0;
+  // controls.maxAzimuthAngle = 0;
+  controls.minPolarAngle = Math.PI /2;
+  controls.maxPolarAngle = Math.PI /2;
+  //controls.position.set(-15, 1, 15);
+  controls.target.set( 0, 2, 0 );
+  controls.update();
+
   render();
-  animate();
+ // animate();
 
   function animate() {
     // angle = angle + 0.01 > Math.PI * 2 ? 0 : angle + 0.01;
     // camera.position.x = rad * Math.cos(angle);
     // camera.position.z = rad * Math.sin(angle);
+     //camera.lookAt(0, 2, 0);
 
-     camera.lookAt(0, 2, 0);
+
     renderer.render(scene, camera);
     requestAnimationFrame(animate);
   }
