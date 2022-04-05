@@ -5,7 +5,7 @@ import { GLTFLoader } from "../jsm/loaders/GLTFLoader.js";
 //import { RGBELoader } from "./jsm/loaders/RGBELoader.js";
 //import { RoughnessMipmapper } from "./jsm/utils/RoughnessMipmapper.js";
 
-import LocomotiveScroll from '../build/locomotive-scroll.esm';
+import LocomotiveScroll from '../build/locomotive-scroll.esm.js';
 
 (function () {
 let camera,
