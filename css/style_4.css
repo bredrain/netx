@@ -456,51 +456,75 @@
     .testionials_left {
         border-right: solid 2px #ffffff;
     }
-     
-    
-    .look-calendar4 {
-        width: 250px;
-        border: dashed 2px #037256;
+
+
+    /* ********************** Slide 3 **************** */
+
+    .slide_3 {
+        background:
+            radial-gradient(at top right, #000000 0%, transparent 60%, transparent 100%),
+            radial-gradient(at bottom left, #19e9d7, transparent 60%, transparent 100%),
+            radial-gradient(at top left, #0079bb, transparent 60%, transparent 100%),
+            radial-gradient(at bottom right, #00fe03 0%, transparent 100%);
+            padding-top: 3rem;
+            position: relative;
+            border-top: solid 2px #ffffff;
+    }
+    .slide_3_flex {
+        display: flex;
+    }
+
+    .slide_3_flex  {
+        border-bottom: solid 2px #ffffff;
+    }
+    .slide_3_left {
+        flex: 50%;
+    }
+    .slide_3_right {
+        flex: 50%;
+        border-left: solid 2px #ffffff;
         padding: 20px;
-        background-color: #d5faf2;
-        margin: 0 auto;
-      }
-      #calendar4 {
-        width: 100%;
-        line-height: 1.2em;
-        font-size: 15px;
-        text-align: center;
-        border-spacing:3px;
-        color: #000;
-      }
-      #calendar4 tr.dn td {
-        color: #24aa72;
-        font-weight: 700;
-      }
-      #calendar4 thead tr:last-child {
-        font-size: small;
-        color: #555555;
-      }
-      #calendar4 thead tr:nth-child(1) td:nth-child(2) {
-        color: #323232;
-        font-size: 18px;
-        font-weight: 400;
-      }
-      #calendar4 thead tr:nth-child(1) td:nth-child(1):hover,
-      #calendar4 thead tr:nth-child(1) td:nth-child(3):hover {
-        cursor: pointer;
-      }
-      #calendar4 tbody td {
-        color: #8523be;
-      }
-      #calendar4 tbody td:nth-child(n+6),
-      #calendar4 .holiday {
-        color: #c50c05;
-      }
-      #calendar4 tbody td.today {
-        background: #dc0000;
-        color: #fff;
-      }
+    }
+     
+    /* ********************** Calendar **************** */
+    
+
+    .hello-week .navigation {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3rem;
+        border-bottom: solid 2px #ffffff;
+        font-family: Brown, Arial, Helvetica, sans-serif;
+        font-size: 1.6rem;
+        font-weight: bold;
+        text-transform: uppercase;
+
+    }
+    .hello-week .prev {
+        background-image: url(../img/arrow-left.svg);
+        position: absolute;
+        left: 20px;
+        top: 2px;
+    }
+    .hello-week .next {
+        background-image: url(../img/arrow-rigth.svg);
+        position: absolute;
+        right: 20px;
+        top: 2px;
+    }
+    .hello-week .prev, .hello-week .next {
+        background-repeat: no-repeat;
+
+    } 
+    .hello-week .day {
+        font-family: Brown, Arial, Helvetica, sans-serif;
+        font-size: 1.3rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+/* ********************** Start **************** */
 
       #space, .stars {
         overflow: hidden;
