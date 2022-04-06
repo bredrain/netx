@@ -7,7 +7,9 @@ import { GLTFLoader } from "../jsm/loaders/GLTFLoader.js";
 
 import LocomotiveScroll from '../build/locomotive-scroll.esm.js';
 
-(function () {
+//(function () {
+ // document.addEventListener('DOMContentLoaded', function(){
+window.addEventListener("load", function () {
 let camera,
   scene,
   renderer,
@@ -90,9 +92,64 @@ function render() {
 }
 
 
+const pageContainer = document.querySelector('[data-scroll-container]');
+
+/* SMOOTH SCROLL */
 const scrollerNew = new LocomotiveScroll({
-  el: document.querySelector('[data-scroll-container]'),
+  el: pageContainer,
   smooth: true
 });
-console.log(scrollerNew);
-})();
+
+
+scrollerNew.on("scroll", ScrollTrigger.update);
+
+ScrollTrigger.scrollerProxy(pageContainer, {
+  scrollTop(value) {
+    return arguments.length
+      ? scrollerNew.scrollTo(value, 0, 0)
+      : scrollerNew.scroll.instance.scroll.y;
+  },
+  getBoundingClientRect() {
+    return {
+      left: 0,
+      top: 0,
+      width: window.innerWidth,
+      height: window.innerHeight
+    };
+  },
+  pinType: pageContainer.style.transform ? "transform" : "fixed"
+});
+
+//window.addEventListener("load", function () {
+  let pinBoxes = document.querySelectorAll(".slide_1_full > *");
+  let pinWrap = document.querySelector(".slide_1_full");
+  let pinWrapWidth = pinWrap.offsetWidth;
+  let horizontalScrollLength = pinWrapWidth - window.innerWidth;
+
+  // Pinning and horizontal scrolling
+
+  gsap.to(".slide_1_full", {
+    scrollTrigger: {
+      scroller: pageContainer, //locomotive-scroll
+      scrub: true,
+      trigger: "#full_contain",
+      pin: true,
+      // anticipatePin: 1,
+      start: "bottom bottom",
+      end: pinWrapWidth
+    },
+    x: -horizontalScrollLength,
+    ease: "none"
+  });
+
+  ScrollTrigger.addEventListener("refresh", (self) => {
+    scrollerNew.update();
+    console.log(self.ptogress);
+  }); //locomotive-scroll
+
+  ScrollTrigger.refresh();
+  //scrollerNew.update()
+//});
+
+  });
+//})();
