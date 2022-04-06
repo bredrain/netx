@@ -16,7 +16,7 @@ let camera,
   angle = 0,
   rad = 1;
 let renderRequested = false;
-//init();
+init();
 
 function init() {
   const container = document.createElement("div");
