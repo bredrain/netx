@@ -143,7 +143,6 @@
         /* padding: 20px; */
         flex: 50%;
         min-width: 0;
-
         /* display: inline-block;
         width: 50%;
         vertical-align: top; */
@@ -163,7 +162,34 @@
     }
     .slide1_canvas img {
         /* width: 100%; */
+      
         height: 300px;
+    }
+    .slide1_canvas {
+        position: relative;
+    }
+    .book_button {
+        background-color: #013962;
+        font-family: Brown, Arial, Helvetica, sans-serif;
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #ffffff;
+        /* position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -10%; */
+        /* width: fit-content; */
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 20px;
+        /* position: absolute;
+        calc(100vh - 3rem - 3rem - 40px)
+        top: -20px; */
+        top: -20px;
+        position: relative;
+        padding: 20px 40px;
+        box-shadow: 0 0 15px 15px rgb(255 255 255 / 70%);
     }
     .slide_1_right {
         /* grid-column: 8/ 13;
@@ -187,7 +213,7 @@
     .slide_1_gap {
         /* grid-column: 1 / 13;
         grid-row: 3 / 4; */
-        height: 20vh;
+        height: 10vh;
     }
     
     .scrl_container {
@@ -202,6 +228,7 @@
         flex-wrap: nowrap;
         
         width: fit-content;
+        padding-right: 150px;
         
         /* overflow-x: auto;        */
     }
@@ -214,11 +241,11 @@
     .slide_1_ruler {
         position: absolute;
         top: 0;
-        left: -30px;
+        left: 0;
         bottom: 0;
         background-image: url(../img/ruler.svg);
-        background-repeat: no-repeat;
-        background-size: cover;
+        background-repeat: repeat-y;
+        /* background-size: cover; */
         width: 20px;
     
     }
@@ -271,6 +298,7 @@
         margin-top: 20px;
         margin-bottom: 20px;
         font-size: 1rem;
+        position: relative;
     }
     
     .story_grid::-webkit-scrollbar {    
@@ -374,15 +402,21 @@
         display: flex;
     }
     .testionials>div {
-        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+    .testionials>.video {
+        padding: 0;        
     }
     .video_player video {
         width: 100%;
     }
-    .left_col { 
+    .testionials_right { 
         flex: 20%;
     }
-    .right_col { 
+    .testionials_left { 
         flex: 20%;
     }
     .slide_2 .video {
@@ -391,6 +425,7 @@
     .person {
         width: 15vw;
         height: auto;
+        margin-bottom: 20px;
      }
      .person img {
          width: 100%;
@@ -403,24 +438,70 @@
          font-size: 1.6rem;
          font-weight: bold;
          text-transform: uppercase;
-         padding: 0.5rem;
+         padding: 0.5rem 0;
+         width: 100%;
      }
       
         /* border-top: solid 2px #ffffff;
         } */
     
-    .video_head {
+    .video_head, .testionials {
         border-bottom: solid 2px #ffffff;
     }
     
-     /* {
+    .testionials_right {
         border-left: solid 2px #ffffff;
         }
-    
+    .testionials_left {
         border-right: solid 2px #ffffff;
-    } */
+    }
      
     
+    .look-calendar4 {
+        width: 250px;
+        border: dashed 2px #037256;
+        padding: 20px;
+        background-color: #d5faf2;
+        margin: 0 auto;
+      }
+      #calendar4 {
+        width: 100%;
+        line-height: 1.2em;
+        font-size: 15px;
+        text-align: center;
+        border-spacing:3px;
+        color: #000;
+      }
+      #calendar4 tr.dn td {
+        color: #24aa72;
+        font-weight: 700;
+      }
+      #calendar4 thead tr:last-child {
+        font-size: small;
+        color: #555555;
+      }
+      #calendar4 thead tr:nth-child(1) td:nth-child(2) {
+        color: #323232;
+        font-size: 18px;
+        font-weight: 400;
+      }
+      #calendar4 thead tr:nth-child(1) td:nth-child(1):hover,
+      #calendar4 thead tr:nth-child(1) td:nth-child(3):hover {
+        cursor: pointer;
+      }
+      #calendar4 tbody td {
+        color: #8523be;
+      }
+      #calendar4 tbody td:nth-child(n+6),
+      #calendar4 .holiday {
+        color: #c50c05;
+      }
+      #calendar4 tbody td.today {
+        background: #dc0000;
+        color: #fff;
+      }
+
+
     /***************  CSS Spere ******************
     
     .container {
@@ -483,7 +564,7 @@
     }
     /*ANIMATION*/
     
-    .container:hover .circ:nth-of-type(1) {
+    /* .container:hover .circ:nth-of-type(1) {
     transform: translateX(-50%) translateY(-50%) rotateX(180deg) rotateY(40deg) translateZ(-60px);
     }
     .container:hover .circ:nth-of-type(2) {
@@ -509,4 +590,4 @@
     }
     .container:hover {
     background-color: #f2f2f2;
-    }
+    } */

@@ -13,9 +13,11 @@ window.addEventListener("load", function () {
 let camera,
   scene,
   renderer,
+  controls,
   angle = 0,
   rad = 1;
 let renderRequested = false;
+
 init();
 
 function init() {
@@ -25,32 +27,39 @@ function init() {
     return;
   }
 
+  const headMain = document.querySelector('.main_header');
+  const headBlock = document.querySelector('.heading');
+  const button = document.querySelector('.book_button');
+  if (!headMain || !headBlock || !button) {  
+    return;
+  }   
   const viewWidth =  parent.clientWidth;
-  const viewHeight = viewWidth/window.devicePixelRatio;//parent.clientHeight;
-  
+  //const viewHeight = viewWidth/window.devicePixelRatio;//parent.clientHeight;
+  const viewHeight = window.innerHeight - headMain.clientHeight - headBlock.clientHeight- button.clientHeight;
   parent.appendChild(container);
 
   camera = new THREE.PerspectiveCamera(45, viewWidth / viewHeight, 0.25, 20);
-  camera.position.set(-5, 1, 5);
-  rad = Math.sqrt(
-    Math.pow(camera.position.x, 2) + Math.pow(camera.position.z, 2)
-  );
+  camera.position.set(-5, 0, 5);
+  // rad = Math.sqrt(
+  //   Math.pow(camera.position.x, 2) + Math.pow(camera.position.z, 2)
+  // );
+  
 
   scene = new THREE.Scene();
 
-  // const color = 0xffffff;
-  // const intensity = 1;
-  // const light = new THREE.DirectionalLight(color, intensity);
-  // light.position.set(-1, 2, 4);
-  // scene.add(light);
+  const color = 0x10BFE3;
+  const intensity = 1;
+  const light = new THREE.DirectionalLight(color, intensity);
+  light.position.set(-1, 2, 4);
+  scene.add(light);
 
   const ambientLight = new THREE.AmbientLight(0xcccccc, 0.4);
   scene.add(ambientLight);
 
-  const pointLight = new THREE.PointLight(0xffffff, 0.8);
-  camera.add(pointLight);
-  scene.add(camera);
-  camera.lookAt( scene.position );
+  // const pointLight = new THREE.PointLight(0xffffff, 0.8);
+  // camera.add(pointLight);
+  // scene.add(camera);
+  // camera.lookAt( scene.position );
 
 
 
@@ -78,7 +87,7 @@ function init() {
   controls.minPolarAngle = Math.PI /2;
   controls.maxPolarAngle = Math.PI /2;
   //controls.position.set(-15, 1, 15);
-  controls.target.set( 0, 2, 0 );
+  controls.target.set( 0, 1, 0 );
   controls.update();
 
   render();
@@ -95,23 +104,54 @@ function init() {
     requestAnimationFrame(animate);
   }
 
-  window.addEventListener("resize", onWindowResize);
+  //window.addEventListener("resize", onWindowResize);
+  let observer = new ResizeObserver(doResize);
+  const node = document.querySelector('#slide_1_scene');
+  const config = {
+    attributes: true,
+    childList: true,
+    subtree: true
+};
+  observer.observe(node, config);
+
 }
 
-function onWindowResize() {
+function doResize(entries) {
+
+  // entries.forEach(entry => {
+  //   console.log('width', entry.contentRect.width);
+  //   console.log('height', entry.contentRect.height);
+  // });
+
   const parent = document.querySelector("#slide_1_scene");
   if (!parent) {
     return;
   }
+  const headMain = document.querySelector('.main_header');
+  const headBlock = document.querySelector('.heading');
+  const button = document.querySelector('.book_button');
+  if (headMain && headBlock && button) {
 
   const viewWidth =  parent.clientWidth;
-  const viewHeight = viewWidth/window.devicePixelRatio;//parent.clientHeight;
+  const viewHeight = window.innerHeight - headMain.clientHeight - headBlock.clientHeight- button.clientHeight;
+  //const viewHeight = viewWidth/window.devicePixelRatio;//parent.clientHeight;
 
   camera.aspect = viewWidth / viewHeight;
+ 
   camera.updateProjectionMatrix();
-
+ 
   renderer.setSize(viewWidth, viewHeight);
+  //controls.update();
+  render();
+  }
 }
+
+
+//var doTimer;
+// function onWindowResize() {
+//   clearTimeout(doTimer);
+//   doTimer = setTimeout(doResize, 300);
+// }
 function render() {
   renderer.render(scene, camera);
 }
@@ -121,10 +161,12 @@ gsap.to("#left_slide", {
     //scroller: "#scroll_cont", 
     trigger: "#right_slide",
     pin: "#left_slide",
+    scrub: 1,
     // anticipatePin: 1,
     start: "top "+ document.querySelector('header').clientHeight,
-    end: () => "+=" + (document.querySelector('#right_col').offsetHeight - document.querySelector('.heading').offsetHeight - document.querySelector('.slide1_canvas').offsetHeight), //- document.querySelector('#left_slide').offsetHeight
-    markers: true //for tests
+    end: () => "+=" + (document.querySelector('#right_col').offsetHeight - document.querySelector('.heading').offsetHeight - document.querySelector('.slide1_canvas').offsetHeight - document.querySelector('.book_button').offsetHeight ), //- document.querySelector('#left_slide').offsetHeight
+    markers: true, //for tests
+    invalidateOnRefresh: true 
   }
   
 });
@@ -157,7 +199,7 @@ gsap.to("#left_slide", {
 //   start: "top top",
 //   end: "+=500"
 // });
-
+console.log(pinFull.offsetWidth - this.window.innerWidth);
  const margin = 0.3;
   if ((typeof(pinFull) != 'undefined' && pinFull != null)) {
     let sections = gsap.utils.toArray('.rotate');
@@ -168,11 +210,12 @@ gsap.to("#left_slide", {
       scrollTrigger: {
         trigger: pinFull,
         markers: true, // for tests
+        invalidateOnRefresh: true ,
         scrub: 1,
         pin: true,
         onUpdate: self => {
 
-          console.log("progress:", self.progress);
+          //console.log("progress:", self.progress);
           const progress = self.progress;
           let scale;
           if (progress == 0 || progress == 1) {
@@ -184,7 +227,7 @@ gsap.to("#left_slide", {
           } else  if (progress >= (1- margin)) {
             scale = (progress -1 +margin)/margin;
           }
-          console.log("scale:", scale);
+          //console.log("scale:", scale);
           document.querySelector('.fly_obj').style.transform = "translateY(-50%) scale(" + scale + ")";
         },
         //snap: 1 / (sections.length - 1),
