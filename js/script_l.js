@@ -144,7 +144,7 @@ ScrollTrigger.scrollerProxy(pageContainer, {
 
   ScrollTrigger.addEventListener("refresh", (self) => {
     scrollerNew.update();
-    console.log(self.ptogress);
+    console.log(self.progress);
   }); //locomotive-scroll
 
   ScrollTrigger.refresh();

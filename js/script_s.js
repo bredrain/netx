@@ -18,7 +18,7 @@ let camera,
   rad = 1;
 let renderRequested = false;
 
-init();
+//init();
 
 function init() {
   const container = document.createElement("div");
@@ -214,7 +214,6 @@ console.log(pinFull.offsetWidth - this.window.innerWidth);
         scrub: 1,
         pin: true,
         onUpdate: self => {
-
           //console.log("progress:", self.progress);
           const progress = self.progress;
           let scale;
@@ -236,7 +235,6 @@ console.log(pinFull.offsetWidth - this.window.innerWidth);
       },
     });
   }
-
   
   const testimonials =document.querySelector('.testimonials');
   if (testimonials) {
