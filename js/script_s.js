@@ -242,7 +242,6 @@ console.log(pinFull.offsetWidth - this.window.innerWidth);
   if (testimonials) {
     testimonials.addEventListener('click', (event) => {
       if (event.target.closest(".person")) {
-        //console.log('---ID---', event.target.closest(".person").dataset.video_id);
         const pressed = event.target.closest(".person");
         const pressedID = pressed.dataset.video_id;
         if (!pressedID) {
@@ -250,28 +249,22 @@ console.log(pinFull.offsetWidth - this.window.innerWidth);
         }
         const active = document.querySelector(".video_player.active");
         const activate = document.querySelector("#" + pressedID);
+        const vidElement = document.querySelector('.video_player.active video');
+        const playButton = getSibling(vidElement, "playpause");
         if (active && activate) {
+          vidElement.pause();
+          playButton.classList.remove('hide');
           active.classList.remove("active");
           activate.classList.add("active");
         }
       } else if (event.target.classList.contains("banner-video")) { 
         const vidElement = event.target;
-        // const parent = vidElement.parentElement;
-        // let nextSibling = parent.firstChild;
-        // let playButton;
-        // while (nextSibling) {
-        //   if (nextSibling.classList.contains("playpouse")) {
-        //     playButton = nextSibling;
-        //     break;
-        //   }
-        //   nextSibling = nextSibling = nextSibling.nextElementSibling;
-        // } 
+        
         const playButton = getSibling(vidElement, "playpause")
         if (playButton) {
           playButton.classList.remove("hide");
         }
         vidElement.pause();
-        console.log('---vid---', event.target);
       } else if (event.target.classList.contains("playpause")) { 
        const playButton = event.target;
        const vidElement = getSibling(playButton, "banner-video");
