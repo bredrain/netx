@@ -237,5 +237,19 @@ console.log(pinFull.offsetWidth - this.window.innerWidth);
     });
   }
 
+  
+
+  var calendar = new HelloWeek({
+    selector: '#ticket_calendar',
+    nav: ['', ''],
+    onSelect: (arg_select) => { console.log(arg_select) },
+    onNavigation: (arg_nav) => { 
+      console.log('Current Month: ', calendar.getMonth());
+        console.log('Current Year: ', calendar.getYear());
+     }, 
+   // beforeCreateDay: (data) => {console.log(data)},
+    //lang: 'it',
+    todayHighlight: true,
+});
 
   });
