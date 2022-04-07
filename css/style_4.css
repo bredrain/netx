@@ -399,18 +399,43 @@
 
     }
     .wrapper { }
-    .testionials { 
+    .testimonials { 
         display: flex;
     }
-    .testionials>div {
+    .testimonials>div {
         display: flex;
         flex-direction: column;
         align-items: center;
         padding: 20px;
     }
-    .testionials>.video {
+    .testimonials>.video {
         padding: 0;        
     }
+    .video_wrapper {
+        position: relative;
+    }
+    .video_player {
+        display: none;
+        position: absolute;
+    }
+    .video_player.active {
+        display: block;
+    }
+    .playpause {
+        background-image:url(../img/play_btn.svg);
+        background-repeat:no-repeat;
+        width:50%;
+        height:50%;
+        position:absolute;
+        left:0%;
+        right:0%;
+        top:0%;
+        bottom:0%;
+        margin:auto;
+        background: size 20%;;
+        background-position: center;
+    }
+    
     .video_player video {
         width: 100%;
     }
@@ -446,7 +471,7 @@
         /* border-top: solid 2px #ffffff;
         } */
     
-    .video_head, .testionials {
+    .video_head, .testimonials {
         border-bottom: solid 2px #ffffff;
     }
     

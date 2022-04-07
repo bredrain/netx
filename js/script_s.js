@@ -238,8 +238,22 @@ console.log(pinFull.offsetWidth - this.window.innerWidth);
   }
 
   
+  const persons = document.querySelectorAll('.person');
+  const testimonials =document.querySelector('.testimonials');
+  if (testimonials) {
+    testimonials.addEventListener('click', (event) => {
+      if (event.target.closest(".person")) {
+        console.log('---ID---', event.target.closest(".person").id);
+      }
+    });
+  } 
 
-  var calendar = new HelloWeek({
+
+
+
+
+
+  const calendar = new HelloWeek({
     selector: '#ticket_calendar',
     nav: ['', ''],
     onSelect: (arg_select) => { console.log(arg_select) },

@@ -943,37 +943,47 @@
       <section class="slide2_section" >
         <div class="slide_2 wrapper">
          <div class="slide_1_gap"></div>
-          <div class="testionials">
+          <div class="testimonials">
             <div class="testionials_left">
-            <div class="person">
+            <div class="person" data-video="vid_1">
               <img src="./img/Screenshot.png" alt="">
             </div>
-            <div class="person">
+            <div class="person" data-video="vid_2">
               <img src="./img/Screenshot.png" alt="">
             </div>
-            <div class="person">
+            <div class="person" data-video="vid_3">
               <img src="./img/Screenshot.png" alt="">
             </div>
         </div>
-          <div class="video">
+         <div class="video">
             <div class="video_head">
                What our passengers say
             </div>
-             <div class="video_player">  
-               <video autoplay loop muted playsinline class="banner-video">
-                  <!-- <source src="path/to/video.mov" type='video/mp4; codecs="hvc1"'> -->
-                  <source src="./video/sj0ry-5ijpt.webm" type="video/webm">
-              </video>
-            </div>
-            </div>
+            <div class="video_wrapper"> 
+               <div class="video_player active" id="vid_1">               
+                  <video  loop muted playsinline class="banner-video">
+                     <!-- <source src="path/to/video.mov" type='video/mp4; codecs="hvc1"'> -->
+                     <source src="./video/sj0ry-5ijpt.webm" type="video/webm">
+                  </video>
+                  <div class="playpause"></div>               
+               </div>
+               <div class="video_player" id="vid_2">                
+                  <video  loop muted playsinline class="banner-video">
+                     <!-- <source src="path/to/video.mov" type='video/mp4; codecs="hvc1"'> -->
+                     <source src="./video/sj0ry-5ijpt.webm" type="video/webm">
+                  </video>
+                  <div class="playpause"></div>
+               </div> 
+            </div>                 
+         </div>
           <div class="testionials_right">
-            <div class="person">
+            <div class="person" data-video="vid_4">
               <img src="./img/Screenshot.png" alt="">
             </div>
-            <div class="person">
+            <div class="person" data-video="vid_5">
               <img src="./img/Screenshot.png" alt="">
             </div>
-            <div class="person">
+            <div class="person" data-video="vid_6">
               <img src="./img/Screenshot.png" alt="">
             </div>
           </div>
