@@ -243,7 +243,20 @@ console.log(pinFull.offsetWidth - this.window.innerWidth);
   if (testimonials) {
     testimonials.addEventListener('click', (event) => {
       if (event.target.closest(".person")) {
-        console.log('---ID---', event.target.closest(".person").id);
+        console.log('---ID---', event.target.closest(".person").dataset.video_id);
+        const pressed = event.target.closest(".person");
+        const pressedID = pressed.dataset.video_id;
+        if (!pressedID) {
+          return;
+        }
+        const active = document.querySelector(".video_player.active");
+        const activate = document.querySelector("#" + pressedID);
+        if (active && activate) {
+          active.classList.remove("active");
+          activate.classList.add("active");
+        }
+      } else if (1) {
+
       }
     });
   } 
