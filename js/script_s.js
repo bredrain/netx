@@ -238,12 +238,11 @@ console.log(pinFull.offsetWidth - this.window.innerWidth);
   }
 
   
-  const persons = document.querySelectorAll('.person');
   const testimonials =document.querySelector('.testimonials');
   if (testimonials) {
     testimonials.addEventListener('click', (event) => {
       if (event.target.closest(".person")) {
-        console.log('---ID---', event.target.closest(".person").dataset.video_id);
+        //console.log('---ID---', event.target.closest(".person").dataset.video_id);
         const pressed = event.target.closest(".person");
         const pressedID = pressed.dataset.video_id;
         if (!pressedID) {
@@ -255,13 +254,48 @@ console.log(pinFull.offsetWidth - this.window.innerWidth);
           active.classList.remove("active");
           activate.classList.add("active");
         }
-      } else if (1) {
-
-      }
+      } else if (event.target.classList.contains("banner-video")) { 
+        const vidElement = event.target;
+        // const parent = vidElement.parentElement;
+        // let nextSibling = parent.firstChild;
+        // let playButton;
+        // while (nextSibling) {
+        //   if (nextSibling.classList.contains("playpouse")) {
+        //     playButton = nextSibling;
+        //     break;
+        //   }
+        //   nextSibling = nextSibling = nextSibling.nextElementSibling;
+        // } 
+        const playButton = getSibling(vidElement, "playpause")
+        if (playButton) {
+          playButton.classList.remove("hide");
+        }
+        vidElement.pause();
+        console.log('---vid---', event.target);
+      } else if (event.target.classList.contains("playpause")) { 
+       const playButton = event.target;
+       const vidElement = getSibling(playButton, "banner-video");
+       if (vidElement) {
+        playButton.classList.add("hide");
+        vidElement.play();
+       }
+      }  
     });
   } 
 
-
+function getSibling(elem, className) {
+  const parent = elem.parentElement;
+  let nextSibling = parent.firstElementChild;
+  let result = 0;
+  while (nextSibling) {
+    if (nextSibling.classList.contains(className)) {
+      result = nextSibling;
+      break;
+    }
+    nextSibling = nextSibling = nextSibling.nextElementSibling;
+  }
+  return result;
+}
 
 
 
