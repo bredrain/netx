@@ -364,8 +364,8 @@
     
     #g1003 path {
         animation-name: animateIn;
-        animation-duration: 1550ms;
-        animation-delay: calc(var(--animation-order) * 600ms);
+        animation-duration: 900ms;
+        animation-delay: calc(var(--animation-order) * 300ms);
         animation-fill-mode: both;
         animation-timing-function: ease-in-out;
         animation-iteration-count: infinite;
