@@ -362,7 +362,7 @@
         }
     }
     
-    #g1003 path {
+    #g1003 .edge {
         animation-name: animateIn;
         animation-duration: 900ms;
         animation-delay: calc(var(--animation-order) * 300ms);
