@@ -82,8 +82,8 @@
     .slide_2 {
         background:
             radial-gradient(at top right, #00fe03, transparent 60%, transparent 100%),
-            radial-gradient(at bottom left, #0079bb, transparent 60%, transparent 100%),
-            radial-gradient(at top left, #19e9d7, transparent 60%, transparent 100%),
+            radial-gradient(at bottom left, #085a77, transparent 60%, transparent 100%),
+            radial-gradient(at top left, #003c4d, transparent 60%, transparent 100%),
             radial-gradient(at bottom right, #000000 0%, transparent 60%, transparent 100%);
             height: 200vh;
     }
@@ -505,10 +505,10 @@
 
     .slide_3 {
         background:
-            radial-gradient(at top right, #000000 0%, transparent 60%, transparent 100%),
-            radial-gradient(at bottom left, #19e9d7, transparent 60%, transparent 100%),
-            radial-gradient(at top left, #0079bb, transparent 60%, transparent 100%),
-            radial-gradient(at bottom right, #00fe03 0%, transparent 100%);
+        radial-gradient(at top right, #000000 0%, transparent 60%, transparent 100%),
+        radial-gradient(at bottom left, #085a77, transparent 60%, transparent 100%),   /*0b756c  --  19e9d7 */
+        radial-gradient(at top left, #003c4d, transparent 60%, transparent 100%),  /* 003c4d  --0079bb */
+        radial-gradient(at bottom right, #00fe03 0%, transparent 100%);
             padding-top: 3rem;
             position: relative;
             border-top: solid 2px #ffffff;
