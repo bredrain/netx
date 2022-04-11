@@ -23,7 +23,87 @@
         color: #ffffff;
         
     }
-    
+    /* ************************* Preloader ********************* */
+  
+    .prloader {
+        background-color:#ffffff;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 99;
+        box-sizing: content-box;
+    }
+    .prloader > *{
+        box-sizing: content-box;
+    }    
+   
+    .load_fix {
+        position: fixed;
+        top: 50%;
+        bottom: 0;
+        left: 50%;
+        
+    }
+    .load_l1 {
+        background-color: #00e6fe; 
+        /* 00FB03 */
+        border-radius: 50%;
+    }
+    .load_l2, .load_l3, .load_l4 {
+        border-left: 15px solid #00e6fe ;
+        border-top: 15px solid  #00e6fe;
+        border-right: 15px solid  #00e6fe;
+        border-radius: 50%;
+    }
+    .load_l1 {
+        width: 30px;
+        height: 30px;
+        transform: translate(-50%,0);
+        
+    }
+    .load_l2 {
+        width: 40px;
+        height: 50px;
+        transform: translate(-50%,-41px) scale(1, 0.25);;
+    }
+    .load_l3 {
+        width: 50px;
+        height: 60px;
+        transform: translate(-50%,-64px) scale(1, 0.25);;
+    }
+    .load_l4 {
+        width: 70px;
+        height: 70px;
+        transform: translate(-50%,-90px) scale(1, 0.25);;
+    }
+    .load_back {
+        width: 120px;
+        height: 360px;
+        background-color: #ffffff;
+        /*background-image: linear-gradient( rgba(255,255,255,1) 0%,  rgba(255,255,255,0) 50%,  rgba(255,255,255,1) 100%); */
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50px);
+        animation: moveup 3s infinite;
+    }
+    @keyframes moveup {
+        0% {
+            transform: translate(-50%, -50px);
+        }
+        100% {
+            transform: translate(-50%, -460px);
+        }
+
+    }
+
+
+/* ********************************* Main *************************** */
+
+
+
     .main_header {
         position: fixed;
         color: #ffffff;
@@ -710,8 +790,9 @@
   } 
 
       /* Medium devices (tablets, 768px and up)*/
-      @media only screen and (min-width: 768px ) and (max-width: 991px ) {         
+      /* @media only screen and (min-width: 768px ) and (max-width: 991px ) {          */
 
+        @media only screen and (min-width: 577px ) and (max-width: 991px ) {         
         .slide_1_left {
             flex: 100%;
         }
