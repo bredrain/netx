@@ -6,7 +6,7 @@ import { GLTFLoader } from "../jsm/loaders/GLTFLoader.js";
 //import { RoughnessMipmapper } from "./jsm/utils/RoughnessMipmapper.js";
 
 //import LocomotiveScroll from '../build/locomotive-scroll.esm.js';
-
+let calendar;
 //(function () {
 // document.addEventListener('DOMContentLoaded', function(){
 window.addEventListener("load", function () {
@@ -301,11 +301,13 @@ window.addEventListener("load", function () {
     return result;
   }
 
-  const calendar = new HelloWeek({
+  calendar = new HelloWeek({
     selector: "#ticket_calendar",
     nav: ["", ""],
     onSelect: (arg_select) => {
       console.log(arg_select);
+      
+      calendarSelect(arg_select);
     },
     onNavigation: (arg_nav) => {
       console.log("Current Month: ", calendar.getMonth());
@@ -315,6 +317,24 @@ window.addEventListener("load", function () {
     //lang: 'it',
     todayHighlight: true,
   });
+
+  function calendarSelect() {
+    const ticks = document.querySelectorAll('.tick');
+    if (ticks) {
+      for (let elem of ticks) {
+        elem.classList.remove('booked');
+      }
+    }
+    const timeImage = document.querySelector('#time_image');
+    const timeTable = document.querySelector('.timetable');
+    if (timeImage && timeTable) {
+      timeImage.classList.add('hide');
+      timeTable.classList.remove('hide');
+    }
+    for (let date of dates) {
+      console.log(date);
+    }
+  }
 
   document.querySelector('.prloader').style.display = 'none';
 

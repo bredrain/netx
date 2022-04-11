@@ -358,25 +358,7 @@
 
       <section class="slide_3_section">
         
-        <!-- <div class="calendar_wrapper">
-            <div class="clendar_left">
-               <div class="look-calendar">
-                  <table id="calendar">
-                    <thead>
-                    <tr>
-                    <td><b>‹</b>
-                    <td colspan="5">
-                    <td><b>›</b>
-                    <tr class="dn"><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
-                    </thead>
-                    <tbody></tbody>
-                  </table>
-                  </div>
-            </div>
-            <div class="clendar_left">
-
-            </div>
-         </div> -->
+        
          <div class="slide_3">
             
            <div class="slide_3_flex">
@@ -391,126 +373,126 @@
             <div class="month"></div>
         </div>
       </div>
-        <div class="slide_3_right">
-         <img src="./img/Screenshot 2022-03-26 at 17.54 1.png" alt="">
-         <div class="timetable">
-            <div class="timetable_header">
-               <div class="header_text">TIME PREFERENCE</div>
-               <div class="btn_close"></div>
-               <div class="timetable_wrapper">
-                  <div class="timeslot">
-                     <div class="time_text">12:00</div>
-                        <div class="time_tics">
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                        </div>
+         <div class="slide_3_right">
+            <img  id="time_image" src="./img/Screenshot 2022-03-26 at 17.54 1.png" alt="">
+            <div class="timetable hide">
+               <div class="timetable_header">
+                  <div class="header_text">TIME PREFERENCE</div>
+                  <div class="btn_close"></div>
+               </div>   
+                  <div class="timetable_wrapper">
+                     <div class="timeslot" id="slot_1">
+                        <div class="time_text">12:00</div>
+                           <div class="time_tics">
+                              <div class="tick time_1" data-sold="0"></div>
+                              <div class="tick time_2" data-sold="0"></div>
+                              <div class="tick time_3" data-sold="0"></div>
+                              <div class="tick time_4" data-sold="0"></div>
+                           </div>
+                     </div>
+                     <div class="timeslot" id="slot_2">
+                        <div class="time_text">12:30</div>
+                           <div class="time_tics">
+                              <div class="tick time_1" data-sold="0"></div>
+                              <div class="tick time_2" data-sold="0"></div>
+                              <div class="tick time_3" data-sold="0"></div>
+                              <div class="tick time_4" data-sold="0"></div>
+                           </div>
+                     </div>
+                     <div class="timeslot" id="slot_3">
+                        <div class="time_text">13:00</div>
+                           <div class="time_tics">
+                              <div class="tick time_1 booked" data-sold="0"></div>
+                              <div class="tick time_2" data-sold="0"></div>
+                              <div class="tick time_3" data-sold="0"></div>
+                              <div class="tick time_4" data-sold="0"></div>
+                           </div>
+                     </div>
+                     <div class="timeslot" id="slot_4">
+                        <div class="time_text">13:30</div>
+                           <div class="time_tics">
+                              <div class="tick time_1" data-sold="0"></div>
+                              <div class="tick time_2" data-sold="0"></div>
+                              <div class="tick time_3" data-sold="0"></div>
+                              <div class="tick time_4" data-sold="0"></div>
+                           </div>
+                     </div>
+                     <div class="timeslot" id="slot_5">
+                        <div class="time_text">14:00</div>
+                           <div class="time_tics">
+                              <div class="tick time_1" data-sold="0"></div>
+                              <div class="tick time_2" data-sold="0"></div>
+                              <div class="tick time_3" data-sold="0"></div>
+                              <div class="tick time_4" data-sold="0"></div>
+                           </div>
+                     </div>
+                     <div class="timeslot" id="slot_6">
+                        <div class="time_text">14:30</div>
+                           <div class="time_tics">
+                              <div class="tick time_1" data-sold="0"></div>
+                              <div class="tick time_2" data-sold="0"></div>
+                              <div class="tick time_3" data-sold="0"></div>
+                              <div class="tick time_4" data-sold="0"></div>
+                           </div>
+                     </div>
+                     <div class="timeslot" id="slot_7">
+                        <div class="time_text">15:00</div>
+                           <div class="time_tics">
+                              <div class="tick time_1" data-sold="0"></div>
+                              <div class="tick time_2" data-sold="0"></div>
+                              <div class="tick time_3" data-sold="0"></div>
+                              <div class="tick time_4" data-sold="0"></div>
+                           </div>
+                     </div>
+                     <div class="timeslot" id="slot_8">
+                        <div class="time_text">15:30</div>
+                           <div class="time_tics">
+                              <div class="tick time_1" data-sold="0"></div>
+                              <div class="tick time_2" data-sold="0"></div>
+                              <div class="tick time_3" data-sold="0"></div>
+                              <div class="tick time_4" data-sold="0"></div>
+                           </div>
+                     </div>
+                     <div class="timeslot" id="slot_9">
+                        <div class="time_text">16:00</div>
+                           <div class="time_tics">
+                              <div class="tick time_1" data-sold="0"></div>
+                              <div class="tick time_2" data-sold="0"></div>
+                              <div class="tick time_3" data-sold="0"></div>
+                              <div class="tick time_4" data-sold="0"></div>
+                           </div>
+                     </div>
+                     <div class="timeslot" id="slot_10">
+                        <div class="time_text">16:30</div>
+                           <div class="time_tics">
+                              <div class="tick time_1" data-sold="0"></div>
+                              <div class="tick time_2" data-sold="0"></div>
+                              <div class="tick time_3" data-sold="0"></div>
+                              <div class="tick time_4" data-sold="0"></div>
+                           </div>
+                     </div>
+                     <div class="timeslot" id="slot_11">
+                        <div class="time_text">17:00</div>
+                           <div class="time_tics">
+                              <div class="tick time_1" data-sold="0"></div>
+                              <div class="tick time_2" data-sold="0"></div>
+                              <div class="tick time_3" data-sold="0"></div>
+                              <div class="tick time_4" data-sold="0"></div>
+                           </div>
+                     </div>
+                     <div class="timeslot" id="slot_12">
+                        <div class="time_text">17:30</div>
+                           <div class="time_tics">
+                              <div class="tick time_1" data-sold="0"></div>
+                              <div class="tick time_2" data-sold="0"></div>
+                              <div class="tick time_3" data-sold="0"></div>
+                              <div class="tick time_4" data-sold="0"></div>
+                           </div>
+                     </div>
+                     
                   </div>
-                  <div class="timeslot">
-                     <div class="time_text">12:30</div>
-                        <div class="time_tics">
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                        </div>
-                  </div>
-                  <div class="timeslot">
-                     <div class="time_text">13:00</div>
-                        <div class="time_tics">
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                        </div>
-                  </div>
-                  <div class="timeslot">
-                     <div class="time_text">13:30</div>
-                        <div class="time_tics">
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                        </div>
-                  </div>
-                  <div class="timeslot">
-                     <div class="time_text">14:00</div>
-                        <div class="time_tics">
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                        </div>
-                  </div>
-                  <div class="timeslot">
-                     <div class="time_text">14:30</div>
-                        <div class="time_tics">
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                        </div>
-                  </div>
-                  <div class="timeslot">
-                     <div class="time_text">15:00</div>
-                        <div class="time_tics">
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                        </div>
-                  </div>
-                  <div class="timeslot">
-                     <div class="time_text">15:30</div>
-                        <div class="time_tics">
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                        </div>
-                  </div>
-                  <div class="timeslot">
-                     <div class="time_text">16:00</div>
-                        <div class="time_tics">
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                        </div>
-                  </div>
-                  <div class="timeslot">
-                     <div class="time_text">16:30</div>
-                        <div class="time_tics">
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                        </div>
-                  </div>
-                  <div class="timeslot">
-                     <div class="time_text">17:00</div>
-                        <div class="time_tics">
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                        </div>
-                  </div>
-                  <div class="timeslot">
-                     <div class="time_text">17:30</div>
-                        <div class="time_tics">
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                           <div class="tick" data-sold="0"></div>
-                        </div>
-                  </div>
-                  
-               </div>
             </div>
          </div>
-        </div>
       </div>
       </div>
       </section>
@@ -532,6 +514,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
     <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
     <script type="text/javascript" src="./jsm/hello_week/hello.week.min.js"></script>
+    <script  src="./js/dates.js"></script>
     <script type="module" src="./js/script_s.js"></script>
     
   </body>
