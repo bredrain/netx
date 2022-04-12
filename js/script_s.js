@@ -306,7 +306,6 @@ window.addEventListener("load", function () {
     nav: ["", ""],
     onSelect: (arg_select) => {
       console.log(arg_select);
-      
       calendarSelect(arg_select);
     },
     onNavigation: (arg_nav) => {
@@ -318,7 +317,7 @@ window.addEventListener("load", function () {
     todayHighlight: true,
   });
 
-  function calendarSelect() {
+  function calendarSelect(par) {
     const ticks = document.querySelectorAll('.tick');
     if (ticks) {
       for (let elem of ticks) {
@@ -331,12 +330,36 @@ window.addEventListener("load", function () {
       timeImage.classList.add('hide');
       timeTable.classList.remove('hide');
     }
-    for (let date of dates) {
-      console.log(date);
+    for (let single of dates) {
+      if (single.date == par.date) {
+        for (let time of single.slots) {
+          for (let elem of time.ticks) {
+            const res = document.querySelector('#' + time.id + ' .time_' + elem);
+            res.classList.add('booked');
+          }
+        }
+      }
     }
+    
   }
 
   document.querySelector('.prloader').style.display = 'none';
+  const closeBtn = document.querySelector('.btn_close');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function() {
+      const timeImage = document.querySelector('#time_image');
+      const timeTable = document.querySelector('.timetable');
+      if (timeImage && timeTable) {
+        timeImage.classList.remove('hide');
+        timeTable.classList.add('hide');
+        calendar.daysSelected = [];
+      }
+      const day = document.querySelector('.hello-week .day.is-selected');
+      if (day) {
+        day.classList.remove('is-selected');
+      }
 
+    });
+  }
   
 });
