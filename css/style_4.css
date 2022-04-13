@@ -305,7 +305,13 @@ body {
         grid-row: 3 / 4; */
   height: 10vh;
 }
-
+.slide_1 .slide_1_gap {
+  font-family: Brown, Arial, Helvetica, sans-serif;
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding: 1rem 0 0.5rem 0;
+  height: inherit;
+}  
 .scrl_container {
   /* height: 90vh; */
   overflow: hidden;
@@ -620,6 +626,7 @@ body {
   border-left: solid 2px #ffffff;
   padding: 20px;
   position: relative;
+  overflow: hidden;
 }
 
 /* ********************** Calendar **************** */
@@ -673,10 +680,14 @@ body {
   right: 0; */
   display: flex;
   flex-direction: column;
+  /* overflow: hidden; */
+  transition: all 1s;
+  transform: translateX(0%);
 }
 
 .timetable.hide {
-  display: none;
+  /* display: none; */
+  transform: translateX(110%);  
 }
 .timetable_header {
   position: relative;
@@ -738,6 +749,8 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
+  transition: all 1s;
+  transform: translateX(0%);
 }
 #time_image img {
   width: 100%;
@@ -746,7 +759,8 @@ body {
   background-color: #00fb03;
 }
 #time_image.hide {
-    display: none;
+    /* display: none; */
+    transform: translateX(-110%);    
 }
 
 /* ********************** Stars **************** */
